@@ -35,8 +35,6 @@ def steps(n: int) -> int:
 
 def first_larger(n: int) -> int:
     """Returns the first vaue written larger than n.
-    IDEA: Represent the spiral with a dictionary. The key is a tuple (or string/int, whatever works)
-    that represents the row and column so adjacent ones can always be easily referenced.
     Advent of Code 2017, day 3, part 2."""
 
     def sum_of_adjacents(data: dict, key: tuple) -> int:
