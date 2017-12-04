@@ -36,7 +36,60 @@ def steps(n: int) -> int:
 def first_larger(n: int) -> int:
     """Returns the first vaue written larger than n.
     Advent of Code 2017, day 3, part 2."""
-    return 1
+
+    def sum_of_adjacents(data: dict, key: tuple) -> int:
+        """Calculates the sum of the adjacent squares in the spiral."""
+        adjacents = [(key[0] - 1, key[1] + 1), (key[0] + 0, key[1] + 1), (key[0] + 1, key[1] + 1),
+                     (key[0] - 1, key[1] + 0), (key[0] + 1, key[1] + 0),
+                     (key[0] - 1, key[1] - 1), (key[0] + 0, key[1] - 1), (key[0] + 1, key[1] - 1)]
+
+        total = 0
+        for a in adjacents:
+            try:
+                total += data[a]
+            except KeyError:
+                pass
+        return total
+
+    width = 0
+    height = 0
+    current_key = (0, 0)
+    spiral = {current_key: 1}
+    next_value = 1
+
+    # this coruld definitely be written in a better way
+    while next_value <= n:
+        while current_key[0] <= width:
+            current_key = (current_key[0] + 1, current_key[1])
+            next_value = sum_of_adjacents(spiral, current_key)
+            spiral[current_key] = next_value
+            if next_value > n:
+                return next_value
+        width += 1
+
+        while current_key[1] <= height:
+            current_key = (current_key[0], current_key[1] + 1)
+            next_value = sum_of_adjacents(spiral, current_key)
+            spiral[current_key] = next_value
+            if next_value > n:
+                return next_value
+        height += 1
+
+        while current_key[0] > (-1 * width):
+            current_key = (current_key[0] - 1, current_key[1])
+            next_value = sum_of_adjacents(spiral, current_key)
+            spiral[current_key] = next_value
+            if next_value > n:
+                return next_value
+
+        while current_key[1] > (-1 * height):
+            current_key = (current_key[0], current_key[1] - 1)
+            next_value = sum_of_adjacents(spiral, current_key)
+            spiral[current_key] = next_value
+            if next_value > n:
+                return next_value
+
+    return spiral[current_key]
 
 
 if __name__ == '__main__':
