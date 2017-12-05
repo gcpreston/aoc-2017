@@ -4,6 +4,7 @@ from aoc.day01 import day01
 
 
 class TestDay01(unittest.TestCase):
+
     def test_captcha_solution_v1(self):
         self.assertEqual(day01.captcha_solution_v1('1122'), 3)
         self.assertEqual(day01.captcha_solution_v1('1111'), 4)

@@ -4,6 +4,7 @@ from aoc.day02 import day02
 
 
 class TestDay02(unittest.TestCase):
+
     def test_checksum(self):
         spreadsheet = [[5, 1, 9, 5],
                        [7, 5, 3],
