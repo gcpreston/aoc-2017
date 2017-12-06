@@ -1,5 +1,8 @@
-def repeated_redist(banks: list) -> int:
-    """Advent of Code 2017, day 6, part 1."""
+def repeated_redist(banks: list) -> tuple:
+    """Returns a two-element tuple. The first element is the number of redistribution cycles before
+    the produced configuration has been seen before. The second element is the length of the infinite
+    loop produced by the repeated configuration.
+    Advent of Code 2017, day 6, parts 1 and 2."""
 
     def max_index(lst: list) -> int:
         """Returns the index of the max of lst."""
