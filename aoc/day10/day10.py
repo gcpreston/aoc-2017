@@ -31,7 +31,7 @@ def reverse(ring: list, length: int, i: int):
     return ring
 
 
-def solve_part2(s: string) -> string:
+def knot_hash(s: string) -> string:
     """Generates the Knot Hash of the input.
     Advent of Code 2017, day 10, part 2."""
     nums = [ord(c) for c in s] + [17, 31, 73, 47, 23]
@@ -80,5 +80,5 @@ if __name__ == '__main__':
     part1_data = solve_part1(part1_input, 0, 0, list(range(256)))
 
     print(part1_data[0][0] * part1_data[0][1])
-    print(solve_part2(day10_input))
+    print(knot_hash(day10_input))
     # print(reverse([0, 1, 2, 3, 4], 2, 3))
